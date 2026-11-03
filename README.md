@@ -1,64 +1,76 @@
-# Anant Raj — Engineering & R&D Portfolio 🔬 ⚡
+# Anant Raj — Researching, Building, Refining 🔬 ⚡
 
-> **Personal Research & Development portfolio representing systems engineering, native macOS hardware utilities, software supply-chain security, multi-agent AI architecture, and robotics.**
+> **Personal Research & Development portfolio representing systems engineering, native macOS hardware utilities, software supply-chain provenance, multi-compartment AI collectives, and multipedal robotics.**
+> 
+> *Design Architecture Reference: Rebuilt with inspiration from the award-winning **Yogi Suria "One Thread"** ([ysuriadesign.co](https://ysuriadesign.co/)) fused with the interactive transmission terminal and dark telemetry theme of **Arthur Engel** ([aengel.io/contact](https://aengel.io/contact)).*
 
-[![Live Website](https://img.shields.io/badge/Live-Website-58a6ff?style=flat-square)](https://anant-rajj.github.io/portfolio/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-3fb950?style=flat-square)](LICENSE)
-[![Stack: HTML5 + CSS3](https://img.shields.io/badge/Stack-Pure%20HTML5%20%2B%20CSS3-d29922?style=flat-square)]()
-[![Zero JS](https://img.shields.io/badge/JavaScript-0%25%20(Pure%20Static)-bc8cff?style=flat-square)]()
-
----
-
-## 🏛️ Architecture & Technical Constraints
-
-* **100% Pure Semantic HTML5 & CSS3**: Strictly zero JavaScript, TypeScript, or external styling frameworks.
-* **Pure CSS Interactivity**: CSS-only mobile drawer navigation (`:checked` toggle pattern) and smooth native scrolling.
-* **Resource-Conscious Footprint**: Total static bundle is < 600 KB (including ambient audio assets).
-* **Engineering-Notebook Aesthetic**: Charcoal slate (`#0b0d12`, `#12151c`), telemetry grid lines, and crisp typography.
+[![Live Website](https://img.shields.io/badge/Live-Website-ff3344?style=flat-square)](https://anant-rajj.github.io/portfolio/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-2ed573?style=flat-square)](LICENSE)
+[![Design Concept](https://img.shields.io/badge/Concept-The%20System%20Thread-ff3344?style=flat-square)]()
+[![Contact Architecture](https://img.shields.io/badge/Transmission-aengel.io%20Console-00f0ff?style=flat-square)]()
+[![Stack: Vanilla HTML5 + CSS3 + Canvas2D](https://img.shields.io/badge/Stack-Lightweight%20Vanilla%20Web-70a1ff?style=flat-square)]()
 
 ---
 
-## 🚀 Featured Projects Highlighted
+## 🏛️ Conceptual Architecture: "The System Thread"
+
+Inspired by Yogi Suria's continuous 3D narrative linked by a single red thread, this portfolio embodies **The System Thread** — a continuous, unbroken vector filament connecting:
+
+$$\text{Curiosity} \longrightarrow \text{Low-Level Systems} \longrightarrow \text{Software Security} \longrightarrow \text{Hardware Kinematics} \longrightarrow \text{Athletic Cadence}$$
+
+In computer engineering, a *thread* is the foundational unit of concurrent execution. In track athletics, it is the unbroken cadence of repeated splits. In software security, it is the verifiable chain of provenance. The continuous filament guides the viewer through 7 structured chapters:
+
+1. **Chapter 01 // Genesis**: Identity, operating philosophy (`LEARN → UNDERSTAND → BUILD → TEST → REFINE`), and technical stance.
+2. **Chapter 02 // Selected Artifacts**: Curated showcase of four primary systems with live generative Canvas2D visualizers and deep technical slide-out drawers.
+3. **Chapter 03 // Research Index**: Secondary archive of hardware prototypes (ThermoX), driver harnesses (mac-haptics), and entrepreneurship bootcamps (IIT Bombay NEC).
+4. **Chapter 04 // Synapse & Compartments**: Multi-agent AI fleet architecture decomposed across 5 specialized engineering departments with a quota-aware Tier 0 to Frontier routing pipeline.
+5. **Chapter 05 // Kinematics & Chassis**: Spider-Bot multipedal locomotion lab featuring a live 3-DOF inverse kinematics linkage solver.
+6. **Chapter 06 // Cadence & Origin**: Formative track athletics (100m, 200m, marathons) and the discipline of repeated trials under fatigue.
+7. **Chapter 07 // Transmission & Dispatch**: Minimalist communication terminus with one-click email copying and verified links.
+
+---
+
+## 🚀 Curated Systems Highlighted
 
 1. **[VeriPack (pratyancha-hacktoberfest)](https://github.com/anant-rajj/pratyancha-hacktoberfest)**:
-   * Team Lead (`Team pratyancha`) for Hack Day Sonipat, Problem Statement 04.
-   * Software supply-chain integrity analyzer comparing published npm/PyPI tarballs against upstream Git source code.
-   * Path.relative_to Zip-Slip boundary defense, AST capability escalation traversal, Shannon byte entropy obfuscation detection, and 42 passing unit/integration tests.
-   * [Live Dashboard ↗](https://anant-rajj.github.io/pratyancha-hacktoberfest/)
+   * **Role**: Team Lead (`Team pratyancha`) &bull; Hack Day Sonipat &bull; Problem Statement 04.
+   * **Scope**: Automated software supply-chain integrity analyzer comparing published npm/PyPI tarballs against upstream Git source code.
+   * **Engine**: Path-traversal sanitization against Zip-Slip (CVE-2018-1002204), AST capability scan (`child_process`, `fs.chmod`, `socket`), Shannon byte-entropy packed obfuscation scanner (>5.0b threshold), and 42/42 passing deterministic unit/integration tests.
+   * **Live Dashboard**: [anant-rajj.github.io/pratyancha-hacktoberfest ↗](https://anant-rajj.github.io/pratyancha-hacktoberfest/)
 
 2. **[mac-insomnia](https://github.com/anant-rajj/mac-insomnia)**:
-   * Ultra-lightweight, zero-bloat macOS lid-closed stay-awake utility for AI agents, local LLMs, and long compilations.
-   * ~24 KB disk footprint, < 8 MB active RAM, 0 MB idle resident RAM, battery-floor safety cutoff.
+   * **Scope**: Zero-bloat native macOS lid-closed stay-awake utility for long-running AI agent loops, local LLMs (Ollama, llama.cpp), and compilations without external monitors.
+   * **Footprint**: ~24 KB disk size, < 8 MB active RAM, 0 MB idle resident RAM, automatic battery safety floor cutoff (>20%).
+   * **Core API**: Apple IOKit `IOPMAssertionCreateWithName` (`kIOPMAssertionTypePreventUserIdleSystemSleep`).
 
 3. **[mac-lumitrack](https://github.com/anant-rajj/mac-lumitrack)**:
-   * Native C / Objective-C keyboard-backlight controller via `Command (⌘)` / `Fn` + Trackpad slide.
-   * ~50 KB binary size, 3.5 MB RSS, pure Makefile build.
+   * **Scope**: Native C / Objective-C trackpad backlight controller mapping `Command (⌘)` or `Fn` + slide directly to MacBook keyboard illumination.
+   * **Footprint**: ~50 KB compiled binary, ~3.5 MB RSS, 0% idle CPU utilization, built with a pure Makefile without Xcode overhead.
+   * **Frameworks**: Private Apple `MultitouchSupport` and `CoreBrightness` bindings.
 
 4. **[mac-keyglow](https://github.com/anant-rajj/mac-keyglow)**:
-   * Native Swift Menu Bar status controller & mathematical animation studio (< 0.2% CPU overhead, 45–60 FPS hardware loop).
+   * **Scope**: Menu-bar controller & mathematical illumination studio in native Swift.
+   * **Engine**: Instant Strike (flashes keyboard on keydown, snaps off on release) and mathematical wave generators (sine, triangle, exponential) running at 45–60 FPS with < 0.2% CPU overhead.
 
-5. **[mac-haptics](https://github.com/anant-rajj/mac-haptics)**:
-   * Low-level Force Touch Taptic Engine actuator suite for Apple Silicon MacBooks.
+5. **[ThermoX](https://thermox.ai.studio/)**:
+   * **Scope**: Modular Cooling Cartridge Bottle with interchangeable phase-change cores separating thermal regulation from the fluid chamber.
 
-6. **[ThermoX](https://thermox.ai.studio/)**:
-   * Modular Cooling Cartridge Bottle concept and prototype portal.
+6. **Robotics Lab (Spider-Bot)**:
+   * **Scope**: Collaborative hardware-software research into multipedal locomotion, inverse kinematics solvers, multi-servo power rails, and IMU feedback balance.
 
-7. **AI Systems Collective**:
-   * Multi-agent architecture organized across 5 specialized departments (Research, Dev, QA, Docs/UX, Adversarial Debate) with quota-aware routing.
+---
 
-8. **Robotics Lab**:
-   * Multipedal locomotion (Spider-Bot) kinematics, servo coordination, and microcontroller telemetry.
+## ⚡ Lightweight Engineering & Performance
 
-9. **Competitions & Initiatives**:
-   * **E-Cell IIT Bombay NEC (Advanced Track 2026)** with Team Ignitrones.
-   * **Eureka!** feedback-driven product iteration.
-   * **Student Track Athletics** (100m, 200m, marathons).
+* **Zero Heavy 3D Bundles**: No Three.js, Babylon.js, or 10 MB WebGL meshes. Implemented using high-performance, responsive native HTML5 Canvas 2D and SVG vectors achieving a smooth 60 FPS on standard hardware.
+* **Controlled Audio Engine**: Ambient focus track starts disabled by default with an interactive equalizer pill and smooth volume fading.
+* **Accessible & Responsive**: Fully responsive from 1600px desktop monitors down to 360px mobile screens with zero horizontal overflow. Full `prefers-reduced-motion` compliance.
 
 ---
 
 ## 💻 Local Preview
 
-Open directly in any modern browser:
+Run directly in any browser:
 ```bash
 open index.html
 ```
@@ -67,7 +79,7 @@ Or serve via Python:
 ```bash
 python3 -m http.server 8000
 ```
-Visit `http://localhost:8000`.
+Then visit `http://localhost:8000`.
 
 ---
 

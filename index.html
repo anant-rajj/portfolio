@@ -3,251 +3,694 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Anant Raj — Emerging R&D builder working across artificial intelligence, native macOS software, hardware controls, software supply-chain security, and robotics.">
+  <meta name="description" content="Anant Raj — Research & Development systems builder working across low-level macOS software, software supply-chain provenance, multi-compartment AI collectives, and multipedal robotics.">
   <meta name="author" content="Anant Raj">
-  <title>Anant Raj // R&D Systems, AI & Robotics</title>
+  <meta name="theme-color" content="#07080a">
+
+  <!-- OpenGraph Metadata -->
+  <meta property="og:title" content="Anant Raj // Research & Development Systems">
+  <meta property="og:description" content="Curiosity → Low-Level Systems → Software Security → Hardware Kinematics → Athletic Cadence. The continuous thread of systems engineering.">
+  <meta property="og:type" content="website">
+
+  <title>Anant Raj — Researching, Building, Refining</title>
+
+  <!-- Google Fonts: Syne (Avant-Garde Display), Inter (Editorial Sans), JetBrains Mono (Technical) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="is-loading">
 
   <!-- ======================================================================
-       HEADER & NAVIGATION (100% PURE CSS RESPONSIVE NAV)
+       ATMOSPHERIC GRAIN & CONTINUOUS THREAD CANVAS
        ====================================================================== -->
-  <header class="site-header">
-    <div class="container nav-container">
-      <a href="#hero" class="logo-block">
-        <span class="logo-bracket">[</span>AR // R&D<span class="logo-bracket">]</span>
-        <span>ANANT RAJ</span>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <canvas id="thread-canvas" class="thread-canvas" aria-hidden="true"></canvas>
+
+  <!-- Subtle Custom Pointer Follower (Desktop Only) -->
+  <div id="cursor-tracker" class="cursor-tracker" aria-hidden="true">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+  </div>
+
+  <!-- Audio Element (Always starts disabled, toggled by user) -->
+  <audio id="ambient-audio" preload="none" loop>
+    <source src="assets/ambient.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- ======================================================================
+       PROLOGUE / OPENING CURTAIN (THE CONTINUOUS THREAD INITIALIZATION)
+       ====================================================================== -->
+  <aside id="prologue" class="prologue" aria-label="Loading Experience">
+    <div class="prologue-inner">
+      <div class="prologue-badge">
+        <span class="prologue-pulse"></span>
+        <span class="mono">SYSTEM THREAD // CONTINUUM</span>
+      </div>
+      <div class="prologue-title-wrap">
+        <h1 class="prologue-title">ANANT RAJ</h1>
+        <p class="prologue-sub">RESEARCH &bull; UNDERSTAND &bull; BUILD &bull; REFINE</p>
+      </div>
+      <div class="prologue-loader-bar">
+        <div class="prologue-loader-fill" id="prologue-bar"></div>
+      </div>
+      <div class="prologue-footer">
+        <span class="mono" id="prologue-status">INITIALIZING VECTOR CONTINUUM...</span>
+        <button id="skip-prologue" class="prologue-skip-btn">ENTER [ENTER ↵]</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ======================================================================
+       PRIMARY NAVIGATION / HEADER
+       ====================================================================== -->
+  <header class="site-header" id="header">
+    <div class="header-inner">
+      <!-- Identity Flag -->
+      <a href="#hero" class="brand-link" aria-label="Anant Raj — Return to top">
+        <span class="brand-thread-dot" aria-hidden="true"></span>
+        <span class="brand-name">ANANT RAJ</span>
+        <span class="brand-tag mono">MADHYA PRADESH, IN</span>
+        <span class="brand-clock mono" id="header-local-clock">17:00:00 IST</span>
       </a>
 
-      <!-- CSS-Only Hamburger Menu Toggle -->
-      <input type="checkbox" id="nav-toggle" class="nav-toggle-input" aria-label="Toggle Navigation">
-      <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true">
-        <span class="mono">MENU ☰</span>
-      </label>
+      <!-- Chapter Breadcrumb Tracker -->
+      <div class="chapter-indicator mono" id="chapter-indicator" aria-live="polite">
+        <span class="chapter-num" id="current-chapter-num">01</span>
+        <span class="chapter-sep">/</span>
+        <span class="chapter-total">07</span>
+        <span class="chapter-name" id="current-chapter-name">GENESIS</span>
+      </div>
 
-      <ul class="nav-links">
-        <li><a href="#philosophy">// PHILOSOPHY</a></li>
-        <li><a href="#veripack">// VERIPACK</a></li>
-        <li><a href="#mac-tools">// MAC UTILITIES</a></li>
-        <li><a href="#thermox">// THERMOX</a></li>
-        <li><a href="#ai-research">// AI ARCHITECTURE</a></li>
-        <li><a href="#robotics">// ROBOTICS</a></li>
-        <li><a href="#experience">// INITIATIVES</a></li>
-        <li><a href="#contact">// CONTACT</a></li>
-      </ul>
+      <!-- Controls & Menu Trigger -->
+      <div class="header-controls">
+        <!-- Sound Toggle -->
+        <button id="sound-toggle" class="control-btn sound-btn" aria-label="Toggle ambient atmospheric audio" title="Toggle Sound">
+          <span class="equalizer-bars" aria-hidden="true">
+            <span class="bar bar-1"></span>
+            <span class="bar bar-2"></span>
+            <span class="bar bar-3"></span>
+          </span>
+          <span class="sound-label mono">AUDIO <span id="sound-state-text">OFF</span></span>
+        </button>
+
+        <!-- Menu Drawer Toggle -->
+        <button id="nav-open-btn" class="control-btn menu-btn" aria-label="Open navigation index" aria-expanded="false" aria-controls="nav-drawer">
+          <span class="menu-label mono">INDEX</span>
+          <span class="menu-icon-box" aria-hidden="true">
+            <span class="menu-line line-1"></span>
+            <span class="menu-line line-2"></span>
+          </span>
+        </button>
+      </div>
     </div>
   </header>
 
-  <main>
+  <!-- Fullscreen Navigation Drawer -->
+  <nav id="nav-drawer" class="nav-drawer" aria-label="Main Navigation" aria-hidden="true">
+    <div class="nav-drawer-backdrop" id="nav-backdrop"></div>
+    <div class="nav-drawer-content">
+      <div class="nav-drawer-header">
+        <span class="mono text-muted">INDEX &bull; CHRONOLOGY</span>
+        <button id="nav-close-btn" class="drawer-close-btn mono" aria-label="Close navigation">[CLOSE ✕]</button>
+      </div>
+
+      <ul class="nav-chapter-list">
+        <li>
+          <a href="#hero" class="nav-chapter-link" data-chapter="01">
+            <span class="nav-num mono">01</span>
+            <span class="nav-title">GENESIS</span>
+            <span class="nav-desc mono">Identity &bull; Philosophy &bull; Stance</span>
+          </a>
+        </li>
+        <li>
+          <a href="#work" class="nav-chapter-link" data-chapter="02">
+            <span class="nav-num mono">02</span>
+            <span class="nav-title">SELECTED ARTIFACTS</span>
+            <span class="nav-desc mono">VeriPack &bull; Native Mac Suite</span>
+          </a>
+        </li>
+        <li>
+          <a href="#archive" class="nav-chapter-link" data-chapter="03">
+            <span class="nav-num mono">03</span>
+            <span class="nav-title">RESEARCH INDEX</span>
+            <span class="nav-desc mono">ThermoX &bull; Haptics &bull; Initiatives</span>
+          </a>
+        </li>
+        <li>
+          <a href="#ai-research" class="nav-chapter-link" data-chapter="04">
+            <span class="nav-num mono">04</span>
+            <span class="nav-title">SYNAPSE &amp; COMPARTMENTS</span>
+            <span class="nav-desc mono">Multi-Agent AI Architecture</span>
+          </a>
+        </li>
+        <li>
+          <a href="#robotics" class="nav-chapter-link" data-chapter="05">
+            <span class="nav-num mono">05</span>
+            <span class="nav-title">KINEMATICS &amp; CHASSIS</span>
+            <span class="nav-desc mono">Multipedal Locomotion</span>
+          </a>
+        </li>
+        <li>
+          <a href="#about" class="nav-chapter-link" data-chapter="06">
+            <span class="nav-num mono">06</span>
+            <span class="nav-title">CADENCE &amp; ORIGIN</span>
+            <span class="nav-desc mono">Track Athletics to Systems Engineering</span>
+          </a>
+        </li>
+        <li>
+          <a href="#contact" class="nav-chapter-link" data-chapter="07">
+            <span class="nav-num mono">07</span>
+            <span class="nav-title">TRANSMISSION</span>
+            <span class="nav-desc mono">Email &bull; GitHub &bull; Direct Dispatch</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="nav-drawer-footer">
+        <span class="mono text-muted">LOCATION: MADHYA PRADESH, IN &bull; RISHIHOOD UNIVERSITY</span>
+        <div class="nav-social-links mono">
+          <a href="https://github.com/anant-rajj" target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
+          <a href="mailto:anantraj.clcs@gmail.com">EMAIL ↗</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======================================================================
+       MAIN CONTENT CONTAINER
+       ====================================================================== -->
+  <main id="main-content">
+
     <!-- ======================================================================
-         SECTION 1: HERO (TECHNICAL IDENTITY & TELEMETRY)
+         CHAPTER 01: HERO / GENESIS
          ====================================================================== -->
-    <section id="hero" class="section hero-section">
-      <div class="container">
+    <section id="hero" class="scene hero-scene" data-chapter-index="01" data-chapter-title="GENESIS">
+      <div class="scene-inner">
         
-        <div class="hero-meta-row">
-          <span class="pill pill-cyan">
-            <span class="status-dot"></span> R&amp;D BUILDER &amp; SYSTEMS ENGINEER
-          </span>
-          <span class="pill pill-green">
-            <span class="status-dot"></span> TEAM LEAD @ VERIPACK
-          </span>
-          <span class="pill pill-amber">
-            <span class="status-dot"></span> E-CELL IIT BOMBAY NEC ADVANCED
-          </span>
-          <span class="pill">
-            MADHYA PRADESH, INDIA
-          </span>
+        <!-- Chapter Header Eyebrow -->
+        <div class="scene-eyebrow">
+          <span class="thread-anchor-node" data-anchor="hero-top" aria-hidden="true"></span>
+          <span class="mono eyebrow-tag">CHAPTER 01 // GENESIS &amp; CONTINUUM</span>
+          <span class="eyebrow-rule" aria-hidden="true"></span>
+          <span class="mono eyebrow-meta">ANANT RAJ &bull; R&amp;D SYSTEMS BUILDER</span>
         </div>
 
-        <h1 class="hero-title">
-          “I research how systems work.<br>
-          Then I build <span class="accent-text">better ways</span> to make them work.”
-        </h1>
+        <!-- Monumental Hero Statement -->
+        <div class="hero-body">
+          <h1 class="hero-display-title">
+            Researching how systems work.<br>
+            <span class="editorial-em">Building the tools</span> that make them transparent.
+          </h1>
 
-        <p class="hero-lead">
-          I am Anant Raj — an emerging Research &amp; Development builder turning curiosity into technical research, 
-          research into low-level prototypes, and critique into high-efficiency systems. My work spans 
-          <strong>software supply-chain security</strong>, <strong>native macOS hardware utilities</strong>, 
-          <strong>orchestrated AI agent collectives</strong>, and <strong>robotics</strong>.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#veripack" class="btn btn-primary">EXPLORE SELECTED WORK ↘</a>
-          <a href="https://github.com/anant-rajj" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GITHUB PROFILE ↗</a>
-          <a href="mailto:anantraj.clcs@gmail.com" class="btn btn-secondary">DIRECT TRANSMISSION ✉</a>
-        </div>
-
-        <!-- Telemetry Strip -->
-        <div class="telemetry-strip">
-          <div class="telemetry-item">
-            <span class="telemetry-label">Primary Approach</span>
-            <span class="telemetry-value">Research → Implement → Test</span>
-          </div>
-          <div class="telemetry-item">
-            <span class="telemetry-label">Engineering Focus</span>
-            <span class="telemetry-value">Zero Bloat &bull; Low Overhead</span>
-          </div>
-          <div class="telemetry-item">
-            <span class="telemetry-label">System Implementations</span>
-            <span class="telemetry-value">C &bull; Swift &bull; Python &bull; macOS</span>
-          </div>
-          <div class="telemetry-item">
-            <span class="telemetry-label">Active Stack</span>
-            <span class="telemetry-value">IOKit &bull; AST Parsing &bull; Agentic AI</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ======================================================================
-         SECTION 2: HOW I THINK (CORE ENGINEERING PHILOSOPHY)
-         ====================================================================== -->
-    <section id="philosophy" class="section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">// CORE METHODOLOGY</span>
-          <h2>The Differentiating Approach</h2>
-          <p class="section-lead">
-            I don't treat software or hardware as black boxes. My instinct is always to look beneath the abstractions, 
-            measure the actual machine constraints, eliminate unnecessary overhead, and build practical solutions.
-          </p>
-        </div>
-
-        <!-- Pipeline Sequence -->
-        <div class="pipeline-flow">
-          <div class="pipeline-node"><span class="pipeline-step-num">01.</span> RESEARCH</div>
-          <span class="pipeline-arrow">&rarr;</span>
-          <div class="pipeline-node"><span class="pipeline-step-num">02.</span> UNDERSTAND</div>
-          <span class="pipeline-arrow">&rarr;</span>
-          <div class="pipeline-node"><span class="pipeline-step-num">03.</span> DESIGN</div>
-          <span class="pipeline-arrow">&rarr;</span>
-          <div class="pipeline-node"><span class="pipeline-step-num">04.</span> IMPLEMENT</div>
-          <span class="pipeline-arrow">&rarr;</span>
-          <div class="pipeline-node"><span class="pipeline-step-num">05.</span> TEST</div>
-          <span class="pipeline-arrow">&rarr;</span>
-          <div class="pipeline-node"><span class="pipeline-step-num">06.</span> IMPROVE</div>
-        </div>
-
-        <div class="principles-grid">
-          <div class="principle-card">
-            <div class="principle-num">01</div>
-            <h3>Research Before Writing Code</h3>
-            <p>
-              Investigate the existing ecosystem thoroughly. Understand the historical design decisions, limitations, 
-              and memory constraints before opening an editor.
-            </p>
-          </div>
-
-          <div class="principle-card">
-            <div class="principle-num">02</div>
-            <h3>Build to Deeply Understand</h3>
-            <p>
-              Abstract theories don't expose system bottlenecks. Building minimal, functioning prototypes reveals 
-              real-world edge cases that whitepapers frequently gloss over.
-            </p>
-          </div>
-
-          <div class="principle-card">
-            <div class="principle-num">03</div>
-            <h3>Test Against Hard Reality</h3>
-            <p>
-              Rely on deterministic checks, reproducible test suites, and strict boundary audits rather than self-reported 
-              model confidence or unverified claims.
-            </p>
-          </div>
-
-          <div class="principle-card">
-            <div class="principle-num">04</div>
-            <h3>Refine Through Honest Feedback</h3>
-            <p>
-              Treat critique — whether from hackathon judges, users, or competition reviews — as high-signal engineering input. 
-              Iterate relentlessly until the solution is bulletproof.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ======================================================================
-         SECTION 3: FEATURED PROJECT 1 — VERIPACK
-         ====================================================================== -->
-    <section id="veripack" class="section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">// FEATURED TEAM PROJECT</span>
-          <h2>VeriPack — Package vs Source Integrity Analyzer</h2>
-          <p class="section-lead">
-            Automated software supply-chain security analyzer designed to detect unmapped backdoors, lifecycle script injections, 
-            and ghost files hidden inside published package archives.
-          </p>
-        </div>
-
-        <div class="project-case-card">
-          <div class="project-header-row">
-            <div class="project-title-group">
-              <h3>VeriPack (pratyancha-hacktoberfest)</h3>
-              <span class="project-subtitle">Hack Day Sonipat (Rishihood University &times; DevClub) &bull; Problem Statement 04</span>
+          <div class="hero-narrative-split">
+            <div class="hero-editorial-copy">
+              <p class="lead-statement">
+                I am Anant Raj — an R&amp;D systems builder working at the intersections of 
+                <strong>software supply-chain security</strong>, <strong>native macOS low-level utilities</strong>, 
+                <strong>compartmentalized multi-agent AI collectives</strong>, and <strong>multipedal robotics</strong>.
+              </p>
+              <p class="supporting-statement">
+                My work is bound by a single continuous thread: taking systems apart to understand their real machine constraints, 
+                eliminating invisible bloat, and constructing reliable artifacts verified through rigorous feedback.
+              </p>
             </div>
-            <span class="pill pill-green">
-              <span class="status-dot"></span> 42/42 TESTS PASSED &bull; VERIFIED PRODUCTION
+
+            <div class="hero-telemetry-panel">
+              <div class="telemetry-block">
+                <span class="mono tele-caption">OPERATING PHILOSOPHY</span>
+                <div class="methodology-pill mono">
+                  <span>LEARN</span>
+                  <span class="arrow">&rarr;</span>
+                  <span>UNDERSTAND</span>
+                  <span class="arrow">&rarr;</span>
+                  <span>BUILD</span>
+                  <span class="arrow">&rarr;</span>
+                  <span>TEST</span>
+                  <span class="arrow">&rarr;</span>
+                  <span>REFINE</span>
+                </div>
+              </div>
+
+              <div class="telemetry-grid">
+                <div class="tele-item">
+                  <span class="mono tele-label">LOCATION</span>
+                  <span class="tele-val">Madhya Pradesh, India</span>
+                </div>
+                <div class="tele-item">
+                  <span class="mono tele-label">ACADEMIC BASE</span>
+                  <span class="tele-val">Rishihood University</span>
+                </div>
+                <div class="tele-item">
+                  <span class="mono tele-label">CORE DISCIPLINES</span>
+                  <span class="tele-val">C &bull; Swift &bull; Python &bull; Systems</span>
+                </div>
+                <div class="tele-item">
+                  <span class="mono tele-label">VERIFIED STATUS</span>
+                  <span class="tele-val text-green">42 Tests Passed &bull; Supply Chain</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Actions -->
+          <div class="hero-actions">
+            <a href="#work" class="btn btn-crimson">
+              <span>EXPLORE SELECTED WORK</span>
+              <span class="btn-arrow" aria-hidden="true">↓</span>
+            </a>
+            <a href="https://github.com/anant-rajj" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+              <span>GITHUB REPOSITORIES</span>
+              <span class="btn-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a href="mailto:anantraj.clcs@gmail.com" class="btn btn-ghost">
+              <span>DIRECT TRANSMISSION</span>
+              <span class="btn-arrow" aria-hidden="true">✉</span>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Thread Origin Beacon Node -->
+        <div class="hero-anchor-point">
+          <div class="thread-origin-beacon" data-anchor="hero-origin">
+            <div class="beacon-core"></div>
+            <div class="beacon-aura"></div>
+            <span class="mono beacon-label">VECTOR CONTINUUM THREAD 0.1</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         CHAPTER 02: SELECTED ARTIFACTS
+         ====================================================================== -->
+    <section id="work" class="scene work-scene" data-chapter-index="02" data-chapter-title="SELECTED ARTIFACTS">
+      <div class="scene-inner">
+
+        <!-- Chapter Header Eyebrow -->
+        <div class="scene-eyebrow">
+          <span class="thread-anchor-node" data-anchor="work-header" aria-hidden="true"></span>
+          <span class="mono eyebrow-tag">CHAPTER 02 // SELECTED ARTIFACTS</span>
+          <span class="eyebrow-rule" aria-hidden="true"></span>
+          <span class="mono eyebrow-meta">CURATED HIGH-IMPACT SYSTEMS</span>
+        </div>
+
+        <div class="section-heading-wrap">
+          <h2 class="scene-title">Four Systems of Integrity &amp; Silicon</h2>
+          <p class="scene-sub">
+            Curated systems built with zero unnecessary abstractions, deterministic security boundaries, and near-zero idle machine footprints.
+          </p>
+        </div>
+
+        <!-- Showcase List (Large Editorial Projects) -->
+        <div class="artifacts-curation">
+
+          <!-- ================================================================
+               FEATURED PROJECT 01: VERIPACK
+               ================================================================ -->
+          <article class="artifact-card" id="project-veripack">
+            <div class="artifact-grid">
+              
+              <!-- Left: Editorial Content -->
+              <div class="artifact-meta-col">
+                <div class="artifact-index-badge">
+                  <span class="mono artifact-id">ARTIFACT 01</span>
+                  <span class="badge-pill badge-green mono">42/42 TESTS PASSED</span>
+                  <span class="badge-pill mono">TEAM LEAD</span>
+                </div>
+
+                <h3 class="artifact-title">VeriPack</h3>
+                <p class="artifact-subtitle mono">Package vs Source Integrity Analyzer</p>
+
+                <p class="artifact-desc">
+                  Modern package registries (npm, PyPI) allow published tarballs to contain files and build artifacts never committed 
+                  to upstream Git repositories. VeriPack ingests distributed tarballs, enforces strict path-boundary sanitization against 
+                  Zip-Slip attacks (CVE-2018-1002204), and computes byte-for-byte provenance differentials against upstream Git trees.
+                </p>
+
+                <div class="artifact-specs">
+                  <div class="spec-row">
+                    <span class="mono spec-label">CONTEXT:</span>
+                    <span class="spec-val">Hack Day Sonipat (Rishihood &times; DevClub) &bull; Team pratyancha</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="mono spec-label">MY CONTRIBUTION:</span>
+                    <span class="spec-val">Team Lead, decompression boundary guard, AST traversal engine, test suite</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="mono spec-label">CORE STACK:</span>
+                    <span class="spec-val mono">Python &bull; AST Parsing &bull; Shannon Entropy &bull; Tarball Sanitization</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="mono spec-label">STATUS:</span>
+                    <span class="spec-val text-green mono">Verified Production &bull; Live Public Dashboard</span>
+                  </div>
+                </div>
+
+                <div class="artifact-actions">
+                  <button class="btn btn-crimson inspect-drawer-btn" data-project="veripack">
+                    <span>INSPECT TECHNICAL SPECIFICATIONS</span>
+                    <span class="btn-arrow" aria-hidden="true">→</span>
+                  </button>
+                  <a href="https://github.com/anant-rajj/pratyancha-hacktoberfest" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+                    <span>GITHUB ↗</span>
+                  </a>
+                  <a href="https://anant-rajj.github.io/pratyancha-hacktoberfest/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+                    <span>LIVE DASHBOARD ↗</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Right: Interactive Generative Visual -->
+              <div class="artifact-visual-col">
+                <div class="interactive-canvas-frame" data-anchor="veripack-canvas">
+                  <div class="frame-bar">
+                    <span class="mono frame-title">VERIPACK // PROVENANCE RECONCILIATION CHAMBER</span>
+                    <span class="frame-tag mono text-green">GUARD: ACTIVE</span>
+                  </div>
+                  <canvas id="canvas-veripack" class="interactive-visual-canvas" width="600" height="420" aria-label="VeriPack interactive provenance scan visualization"></canvas>
+                  <div class="frame-footer mono">
+                    <span>DIFF: TARBALL ↔ GIT TREE</span>
+                    <span id="veripack-entropy-val">ENTROPY: 4.82 bits/byte (SAFE)</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </article>
+
+          <!-- ================================================================
+               FEATURED PROJECT 02: MAC INSOMNIA
+               ================================================================ -->
+          <article class="artifact-card" id="project-insomnia">
+            <div class="artifact-grid">
+
+              <!-- Left: Editorial Content -->
+              <div class="artifact-meta-col">
+                <div class="artifact-index-badge">
+                  <span class="mono artifact-id">ARTIFACT 02</span>
+                  <span class="badge-pill mono">APPLE SILICON</span>
+                  <span class="badge-pill mono">~24 KB FOOTPRINT</span>
+                </div>
+
+                <h3 class="artifact-title">mac-insomnia</h3>
+                <p class="artifact-subtitle mono">Lid-Closed Execution Engine for Apple Silicon</p>
+
+                <p class="artifact-desc">
+                  Most stay-awake utilities consume 50–100 MB of resident RAM, inject background electron runtimes, or require an external monitor attached. 
+                  mac-insomnia is an ultra-lightweight native CLI engineered with Apple's low-level IOKit power management assertions to allow MacBooks 
+                  to execute long-running AI pipelines, local LLM inference (Ollama, llama.cpp), and compilations with the lid closed.
+                </p>
+
+                <div class="artifact-specs">
+                  <div class="spec-row">
+                    <span class="mono spec-label">RESOURCE RESIDENCE:</span>
+                    <span class="spec-val mono">&lt; 8 MB active RAM &bull; 0 MB idle resident (on-demand CLI)</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="mono spec-label">CORE PRIMITIVES:</span>
+                    <span class="spec-val mono">IOKit &bull; IOPMAssertionCreateWithName &bull; Battery Threshold Cutoff</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="mono spec-label">MY CONTRIBUTION:</span>
+                    <span class="spec-val">Complete system design, IOKit assertion harness, safety battery-floor guard</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="mono spec-label">STATUS:</span>
+                    <span class="spec-val text-green mono">Open Source &bull; Tested on M-Series Architecture</span>
+                  </div>
+                </div>
+
+                <div class="artifact-actions">
+                  <button class="btn btn-crimson inspect-drawer-btn" data-project="insomnia">
+                    <span>INSPECT TECHNICAL SPECIFICATIONS</span>
+                    <span class="btn-arrow" aria-hidden="true">→</span>
+                  </button>
+                  <a href="https://github.com/anant-rajj/mac-insomnia" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+                    <span>GITHUB REPOSITORY ↗</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Right: Interactive Generative Visual -->
+              <div class="artifact-visual-col">
+                <div class="interactive-canvas-frame" data-anchor="insomnia-canvas">
+                  <div class="frame-bar">
+                    <span class="mono frame-title">MAC-INSOMNIA // IOKit POWER TELEMETRY</span>
+                    <span class="frame-tag mono text-crimson">LID: CLOSED / EXEC ACTIVE</span>
+                  </div>
+                  <canvas id="canvas-insomnia" class="interactive-visual-canvas" width="600" height="420" aria-label="mac-insomnia interactive kernel assertion visualizer"></canvas>
+                  <div class="frame-footer mono">
+                    <span>ASSERTION: kIOPMAssertionTypePreventUserIdleSystemSleep</span>
+                    <span>BATTERY GUARD: &gt;20% FLOOR</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </article>
+
+          <!-- ================================================================
+               FEATURED PROJECT 03: MAC LUMITRACK
+               ================================================================ -->
+          <article class="artifact-card" id="project-lumitrack">
+            <div class="artifact-grid">
+
+              <!-- Left: Editorial Content -->
+              <div class="artifact-meta-col">
+                <div class="artifact-index-badge">
+                  <span class="mono artifact-id">ARTIFACT 03</span>
+                  <span class="badge-pill mono">PURE C / OBJ-C</span>
+                  <span class="badge-pill mono">0% IDLE CPU</span>
+                </div>
+
+                <h3 class="artifact-title">mac-lumitrack</h3>
+                <p class="artifact-subtitle mono">Trackpad Gesture Hardware Backlight Daemon</p>
+
+                <p class="artifact-desc">
+                  An event-driven background daemon that maps Command (⌘) or Fn + trackpad drag directly to MacBook keyboard-backlight 
+                  illumination using private Apple CoreBrightness framework bindings. Built with a pure Makefile without Xcode bloat, 
+                  idling at zero CPU utilization until touch contact is established.
+                </p>
+
+                <div class="artifact-specs">
+                  <div class="spec-row">
+                    <span class="mono spec-label">BINARY SIZE:</span>
+                    <span class="spec-val mono">~50 KB compiled binary &bull; ~3.5 MB RSS</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="mono spec-label">APPLE APIS:</span>
+                    <span class="spec-val mono">MultitouchSupport &bull; CoreBrightness &bull; DisplayServices</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="mono spec-label">MY CONTRIBUTION:</span>
+                    <span class="spec-val">Low-level event tap implementation, delta smoothing curve, multi-finger gesture parser</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="mono spec-label">STATUS:</span>
+                    <span class="spec-val text-green mono">Open Source &bull; Pure Makefile Build</span>
+                  </div>
+                </div>
+
+                <div class="artifact-actions">
+                  <button class="btn btn-crimson inspect-drawer-btn" data-project="lumitrack">
+                    <span>INSPECT TECHNICAL SPECIFICATIONS</span>
+                    <span class="btn-arrow" aria-hidden="true">→</span>
+                  </button>
+                  <a href="https://github.com/anant-rajj/mac-lumitrack" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+                    <span>GITHUB REPOSITORY ↗</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Right: Interactive Generative Visual -->
+              <div class="artifact-visual-col">
+                <div class="interactive-canvas-frame" data-anchor="lumitrack-canvas">
+                  <div class="frame-bar">
+                    <span class="mono frame-title">MAC-LUMITRACK // TRACKPAD &amp; LUMINANCE SIMULATOR</span>
+                    <span class="frame-tag mono text-amber">DRAG TO TEST</span>
+                  </div>
+                  <canvas id="canvas-lumitrack" class="interactive-visual-canvas" width="600" height="420" aria-label="mac-lumitrack interactive gesture to brightness simulator"></canvas>
+                  <div class="frame-footer mono">
+                    <span id="lumitrack-status">GESTURE: HOVER OR DRAG ACROSS TRACKPAD</span>
+                    <span id="lumitrack-val">LUMEN: 74%</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </article>
+
+          <!-- ================================================================
+               FEATURED PROJECT 04: MAC KEYGLOW
+               ================================================================ -->
+          <article class="artifact-card" id="project-keyglow">
+            <div class="artifact-grid">
+
+              <!-- Left: Editorial Content -->
+              <div class="artifact-meta-col">
+                <div class="artifact-index-badge">
+                  <span class="mono artifact-id">ARTIFACT 04</span>
+                  <span class="badge-pill mono">NATIVE SWIFT</span>
+                  <span class="badge-pill mono">45–60 FPS LOOP</span>
+                </div>
+
+                <h3 class="artifact-title">mac-keyglow</h3>
+                <p class="artifact-subtitle mono">Hardware Illumination Studio &amp; Strike Engine</p>
+
+                <p class="artifact-desc">
+                  Native macOS menu-bar controller &amp; mathematical lighting engine. Features Instant Strike (flashes keyboard on keydown, 
+                  snaps off on key release) and mathematical wave generators (sine, triangle, exponential pulse) executed with hardware-synchronized 
+                  timing loops consuming &lt; 0.2% CPU.
+                </p>
+
+                <div class="artifact-specs">
+                  <div class="spec-row">
+                    <span class="mono spec-label">PERFORMANCE:</span>
+                    <span class="spec-val mono">&lt; 0.2% CPU overhead &bull; 45–60 FPS smooth hardware loop</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="mono spec-label">ENGINEERING:</span>
+                    <span class="spec-val mono">Native Swift &bull; Translucent Bezel HUD &bull; Dual CLI/GUI modes</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="mono spec-label">MY CONTRIBUTION:</span>
+                    <span class="spec-val">Mathematical waveform generator, Instant Strike event hook, menu-bar interface</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="mono spec-label">STATUS:</span>
+                    <span class="spec-val text-green mono">Open Source &bull; Universal Binary (M-Series / Intel)</span>
+                  </div>
+                </div>
+
+                <div class="artifact-actions">
+                  <button class="btn btn-crimson inspect-drawer-btn" data-project="keyglow">
+                    <span>INSPECT TECHNICAL SPECIFICATIONS</span>
+                    <span class="btn-arrow" aria-hidden="true">→</span>
+                  </button>
+                  <a href="https://github.com/anant-rajj/mac-keyglow" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+                    <span>GITHUB REPOSITORY ↗</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Right: Interactive Generative Visual -->
+              <div class="artifact-visual-col">
+                <div class="interactive-canvas-frame" data-anchor="keyglow-canvas">
+                  <div class="frame-bar">
+                    <span class="mono frame-title">MAC-KEYGLOW // WAVEFORM OSCILLATOR &amp; STRIKE</span>
+                    <span class="frame-tag mono text-cyan">PRESS ANY KEY</span>
+                  </div>
+                  <canvas id="canvas-keyglow" class="interactive-visual-canvas" width="600" height="420" aria-label="mac-keyglow interactive waveform and keydown strike visualizer"></canvas>
+                  <div class="frame-footer mono">
+                    <span>MODE: MATHEMATICAL SINE WAVEFORM</span>
+                    <span id="keyglow-fps">LOOP: 60 FPS</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         CHAPTER 03: RESEARCH INDEX & SECONDARY ARCHIVE
+         ====================================================================== -->
+    <section id="archive" class="scene archive-scene" data-chapter-index="03" data-chapter-title="RESEARCH INDEX">
+      <div class="scene-inner">
+
+        <!-- Chapter Header Eyebrow -->
+        <div class="scene-eyebrow">
+          <span class="thread-anchor-node" data-anchor="archive-header" aria-hidden="true"></span>
+          <span class="mono eyebrow-tag">CHAPTER 03 // RESEARCH INDEX</span>
+          <span class="eyebrow-rule" aria-hidden="true"></span>
+          <span class="mono eyebrow-meta">SECONDARY EXPLORATIONS &amp; INSTITUTIONAL INITIATIVES</span>
+        </div>
+
+        <div class="section-heading-wrap">
+          <h2 class="scene-title">Secondary Explorations &amp; Initiatives</h2>
+          <p class="scene-sub">
+            Complementary physical hardware prototypes, system harnesses, and competitive entrepreneurship bootcamps.
+          </p>
+        </div>
+
+        <!-- Archive Table Grid -->
+        <div class="archive-table">
+          <div class="archive-row archive-header-row mono">
+            <span class="col-num">ID</span>
+            <span class="col-project">PROJECT / INITIATIVE</span>
+            <span class="col-domain">DOMAIN</span>
+            <span class="col-desc">TECHNICAL FOCUS</span>
+            <span class="col-status">STAGE / OUTCOME</span>
+            <span class="col-link">ACCESS</span>
+          </div>
+
+          <!-- Entry 1: ThermoX -->
+          <div class="archive-row">
+            <span class="col-num mono">01</span>
+            <span class="col-project">
+              <strong>ThermoX</strong>
+              <span class="archive-sub mono">Modular Thermal Bottle</span>
+            </span>
+            <span class="col-domain mono">Industrial Design</span>
+            <span class="col-desc">Interchangeable phase-change core cartridges separating cooling regulation from outer fluid chamber.</span>
+            <span class="col-status"><span class="badge-pill badge-amber mono">PROTOTYPE CONCEPT</span></span>
+            <span class="col-link">
+              <a href="https://thermox.ai.studio/" target="_blank" rel="noopener noreferrer" class="archive-link mono">PORTAL ↗</a>
             </span>
           </div>
 
-          <div class="project-role-banner">
-            <strong>Role:</strong> Team Lead &bull; <strong>Team:</strong> pratyancha (Anant Raj, Anshul Pandey, Vinayak Agrawal, Amrit Sagar)
+          <!-- Entry 2: Mac Haptics -->
+          <div class="archive-row">
+            <span class="col-num mono">02</span>
+            <span class="col-project">
+              <strong>mac-haptics</strong>
+              <span class="archive-sub mono">Force Touch Harness</span>
+            </span>
+            <span class="col-domain mono">macOS Driver Layer</span>
+            <span class="col-desc">Direct actuator trigger harness interfacing with Apple Silicon Taptic Engine for custom tactical feedback.</span>
+            <span class="col-status"><span class="badge-pill mono">ACTIVE EXPERIMENT</span></span>
+            <span class="col-link">
+              <a href="https://github.com/anant-rajj/mac-insomnia" target="_blank" rel="noopener noreferrer" class="archive-link mono">CODEBASE ↗</a>
+            </span>
           </div>
 
-          <p class="project-summary">
-            Modern package registries (npm, PyPI) allow published tarballs to contain files and build artifacts that were never checked 
-            into public upstream Git repositories. VeriPack ingests distributed tarballs, enforces strict path-boundary sanitization to prevent 
-            Zip-Slip attacks (CVE-2018-1002204), and computes byte-for-byte provenance differentials against upstream Git trees.
-          </p>
+          <!-- Entry 3: NEC IIT Bombay -->
+          <div class="archive-row">
+            <span class="col-num mono">03</span>
+            <span class="col-project">
+              <strong>E-Cell IIT Bombay NEC</strong>
+              <span class="archive-sub mono">Advanced Track (Team Ignitrones)</span>
+            </span>
+            <span class="col-domain mono">Entrepreneurship Bootcamp</span>
+            <span class="col-desc">Contributing concept research, technical documentation, and campus execution models for Asia's premier competition.</span>
+            <span class="col-status"><span class="badge-pill badge-green mono">ONGOING 2026</span></span>
+            <span class="col-link">
+              <span class="mono text-muted">COMPETITIVE</span>
+            </span>
+          </div>
 
-          <!-- Technical Spec Table -->
-          <table class="tech-spec-table">
-            <thead>
-              <tr>
-                <th>Verification Engine</th>
-                <th>Security Boundary Guard</th>
-                <th>Deterministic Analysis Result</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Archive Decompression Guard</strong></td>
-                <td>Cumulative 500 MB explosion ceiling + <code>Path.relative_to</code> traversal defense</td>
-                <td><span class="pill pill-green">ZERO ZIP-SLIP EXPLOITS</span></td>
-              </tr>
-              <tr>
-                <td><strong>Manifest Lifecycle Inspector</strong></td>
-                <td>Scans <code>package.json</code> &amp; <code>setup.py</code> for unmapped <code>preinstall</code> / <code>postinstall</code> exfiltration hooks</td>
-                <td><span class="pill pill-green">MANIFEST GUARD ACTIVE</span></td>
-              </tr>
-              <tr>
-                <td><strong>AST Capability Scanner</strong></td>
-                <td>Abstract Syntax Tree traversal across dangerous primitives (<code>child_process</code>, <code>fs</code>, <code>socket</code>, <code>dlopen</code>)</td>
-                <td><span class="pill pill-green">0 UNAUTHORIZED ESCALATIONS</span></td>
-              </tr>
-              <tr>
-                <td><strong>Shannon Entropy Obfuscation</strong></td>
-                <td>8.0-bit byte-entropy frequency analysis to identify packed encrypted payloads (>5.0b threshold)</td>
-                <td><span class="pill pill-green">ENCRYPTION DETECTED</span></td>
-              </tr>
-              <tr>
-                <td><strong>Trojan Source Defense</strong></td>
-                <td>Unicode bidirectional control character detection (CVE-2021-42574) and zero-width spaces</td>
-                <td><span class="pill pill-green">BIDI OVERRIDE ISOLATED</span></td>
-              </tr>
-            </tbody>
-          </table>
-
-          <div class="project-links-row">
-            <a href="https://github.com/anant-rajj/pratyancha-hacktoberfest" target="_blank" rel="noopener noreferrer" class="btn btn-primary">VIEW GITHUB REPOSITORY ↗</a>
-            <a href="https://anant-rajj.github.io/pratyancha-hacktoberfest/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">LAUNCH LIVE DASHBOARD ↗</a>
+          <!-- Entry 4: Eureka! -->
+          <div class="archive-row">
+            <span class="col-num mono">04</span>
+            <span class="col-project">
+              <strong>Eureka! E-Cell IIT Bombay</strong>
+              <span class="archive-sub mono">Critique &amp; Rebuild Cycle</span>
+            </span>
+            <span class="col-domain mono">Product Architecture</span>
+            <span class="col-desc">Deconstructed critical jury feedback to systematically rebuild the underlying architecture and product proposition.</span>
+            <span class="col-status"><span class="badge-pill mono">METHODOLOGY TEST</span></span>
+            <span class="col-link">
+              <span class="mono text-muted">DOCUMENTED</span>
+            </span>
           </div>
         </div>
 
@@ -255,94 +698,215 @@
     </section>
 
     <!-- ======================================================================
-         SECTION 4: NATIVE MAC UTILITIES TRIO (RESOURCE-EFFICIENT ENGINEERING)
+         CHAPTER 04: AI SYSTEMS RESEARCH (COMPARTMENTALIZED COLLECTIVE)
          ====================================================================== -->
-    <section id="mac-tools" class="section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">// NATIVE MACOS SYSTEMS ENGINEERING</span>
-          <h2>The Zero-Bloat Mac Utilities Suite</h2>
-          <p class="section-lead">
-            Most desktop utilities consume 50–100 MB of RAM, bundle entire Electron/SwiftUI runtimes, and spawn continuous polling daemons. 
-            I engineer native, lightweight alternatives using low-level Apple APIs with near-zero idle resource footprints.
+    <section id="ai-research" class="scene ai-scene" data-chapter-index="04" data-chapter-title="SYNAPSE &amp; COMPARTMENTS">
+      <div class="scene-inner">
+
+        <!-- Chapter Header Eyebrow -->
+        <div class="scene-eyebrow">
+          <span class="thread-anchor-node" data-anchor="ai-header" aria-hidden="true"></span>
+          <span class="mono eyebrow-tag">CHAPTER 04 // SYNAPSE &amp; COMPARTMENTS</span>
+          <span class="eyebrow-rule" aria-hidden="true"></span>
+          <span class="mono eyebrow-meta">MULTI-AGENT AI ARCHITECTURE</span>
+        </div>
+
+        <div class="section-heading-wrap">
+          <h2 class="scene-title">Compartmentalized Multi-Agent Collective</h2>
+          <p class="scene-sub">
+            Replacing monolithic prompt windows with specialized departmental divisions. 
+            Tasks decompose into directed acyclic graphs (DAGs) routed across cost-aware tiers.
           </p>
         </div>
 
-        <div class="utilities-grid">
+        <!-- Departmental Visual Architecture -->
+        <div class="ai-architecture-container">
+          <div class="ai-departments-grid">
 
-          <!-- Utility 1: Mac Insomnia -->
-          <div class="utility-card">
-            <div class="utility-top">
-              <div class="project-tag-row">
-                <span class="pill pill-cyan">MACOS CLI</span>
-                <span class="pill pill-green">AI WORKFLOWS</span>
+            <!-- Department 1: Research -->
+            <div class="dept-card">
+              <div class="dept-header">
+                <span class="mono dept-index">DEPT 01</span>
+                <span class="mono dept-label">PRIMARY SOURCE</span>
               </div>
-              <h3>mac-insomnia</h3>
-              <p class="mono" style="font-size: 0.82rem; margin-top: 0.25rem;">Lid-Closed Execution Engine</p>
-              <p style="font-size: 0.92rem; margin-top: 0.75rem;">
-                Enables MacBooks to execute long-running AI agent pipelines, local LLM inference (Ollama, llama.cpp), 
-                and compile jobs with the laptop lid closed without external monitors or heavy resident GUIs.
+              <h3 class="dept-title">Research &amp; Grounding</h3>
+              <p class="dept-desc">
+                ArXiv and PubMed query retrieval, API documentation synthesis, and deterministic claim-level verification before code generation.
               </p>
-              
-              <ul class="utility-metrics-list">
-                <li><span class="metric-label">Disk Footprint</span><span class="metric-val">~24 KB (README reported)</span></li>
-                <li><span class="metric-label">Active RAM</span><span class="metric-val">&lt; 8 MB</span></li>
-                <li><span class="metric-label">Idle RAM</span><span class="metric-val">0 MB (On-demand CLI)</span></li>
-                <li><span class="metric-label">Core API</span><span class="metric-val">IOKit IOPMAssertion</span></li>
-                <li><span class="metric-label">Safety Floor</span><span class="metric-val">Automatic battery cutoff</span></li>
-              </ul>
+              <div class="dept-tools mono">TOOLS: semantic-search &bull; doc-crawler &bull; arxiv</div>
             </div>
-            <a href="https://github.com/anant-rajj/mac-insomnia" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="width: 100%;">INSPECT REPOSITORY ↗</a>
+
+            <!-- Department 2: Development -->
+            <div class="dept-card">
+              <div class="dept-header">
+                <span class="mono dept-index">DEPT 02</span>
+                <span class="mono dept-label">ARCHITECTURE</span>
+              </div>
+              <h3 class="dept-title">Development &amp; Refactor</h3>
+              <p class="dept-desc">
+                Synthesizes structural blueprints, executes AST-conscious transformations, and manages build systems without manual intervention.
+              </p>
+              <div class="dept-tools mono">TOOLS: ast-edit &bull; makefile &bull; lsp-daemon</div>
+            </div>
+
+            <!-- Department 3: QA & Eval -->
+            <div class="dept-card">
+              <div class="dept-header">
+                <span class="mono dept-index">DEPT 03</span>
+                <span class="mono dept-label">VERIFICATION</span>
+              </div>
+              <h3 class="dept-title">QA &amp; Adversarial Eval</h3>
+              <p class="dept-desc">
+                Automated unit test execution, regression reproduction, memory leak verification, and fuzz testing against boundary constraints.
+              </p>
+              <div class="dept-tools mono">TOOLS: pytest &bull; valgrind &bull; boundary-fuzz</div>
+            </div>
+
+            <!-- Department 4: Docs & Charting -->
+            <div class="dept-card">
+              <div class="dept-header">
+                <span class="mono dept-index">DEPT 04</span>
+                <span class="mono dept-label">SYNTHESIS</span>
+              </div>
+              <h3 class="dept-title">Documentation &amp; Visuals</h3>
+              <p class="dept-desc">
+                Visual DAG charting, state diagrams, semantic memory compression, and technical post-mortems for architectural continuity.
+              </p>
+              <div class="dept-tools mono">TOOLS: mermaid-engine &bull; docstrings &bull; lcov</div>
+            </div>
+
+            <!-- Department 5: Adversarial Triad -->
+            <div class="dept-card dept-highlight">
+              <div class="dept-header">
+                <span class="mono dept-index">DEPT 05</span>
+                <span class="badge-pill badge-crimson mono">CRITICAL CONSENSUS</span>
+              </div>
+              <h3 class="dept-title">Adversarial Triad Debate</h3>
+              <p class="dept-desc">
+                High-risk system changes require consensus between three isolated perspectives:
+                <strong>Proposer</strong> &rarr; <strong>Red-Team Adversary</strong> &rarr; <strong>Pragmatic Judge</strong>.
+              </p>
+              <div class="dept-tools mono">PROTOCOL: cross-model &bull; zero-collusion &bull; voting</div>
+            </div>
+
           </div>
 
-          <!-- Utility 2: Mac LumiTrack -->
-          <div class="utility-card">
-            <div class="utility-top">
-              <div class="project-tag-row">
-                <span class="pill pill-cyan">PURE C / OBJ-C</span>
-                <span class="pill pill-green">SYSTEM DAEMON</span>
-              </div>
-              <h3>mac-lumitrack</h3>
-              <p class="mono" style="font-size: 0.82rem; margin-top: 0.25rem;">Trackpad Backlight Controller</p>
-              <p style="font-size: 0.92rem; margin-top: 0.75rem;">
-                Ultra-lightweight background utility that maps <code>Command (⌘)</code> or <code>Fn</code> + Trackpad drag 
-                directly to MacBook keyboard-backlight brightness using private Apple CoreBrightness bindings.
-              </p>
-              
-              <ul class="utility-metrics-list">
-                <li><span class="metric-label">Binary Size</span><span class="metric-val">~50 KB (README reported)</span></li>
-                <li><span class="metric-label">Resident RSS</span><span class="metric-val">~3.5 MB</span></li>
-                <li><span class="metric-label">Architecture</span><span class="metric-val">Event-driven, 0% idle CPU</span></li>
-                <li><span class="metric-label">Frameworks</span><span class="metric-val">MultitouchSupport / CoreBrightness</span></li>
-                <li><span class="metric-label">Build System</span><span class="metric-val">Pure Makefile (Zero deps)</span></li>
-              </ul>
+          <!-- Central Quota-Aware Orchestration Layer -->
+          <div class="orchestration-tier-card">
+            <div class="orchestration-header">
+              <span class="thread-anchor-node" data-anchor="ai-orchestrator" aria-hidden="true"></span>
+              <span class="mono text-crimson">CENTRAL QUOTA-AWARE ORCHESTRATION PIPELINE</span>
             </div>
-            <a href="https://github.com/anant-rajj/mac-lumitrack" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="width: 100%;">INSPECT REPOSITORY ↗</a>
+            <div class="orchestration-steps mono">
+              <div class="orch-step">
+                <span class="step-badge">TIER 0</span>
+                <span class="step-name">Deterministic Shell</span>
+                <span class="step-cost">$0.00 &bull; 0 Tokens (grep, ripgrep, AST)</span>
+              </div>
+              <span class="orch-arrow">&rarr;</span>
+              <div class="orch-step">
+                <span class="step-badge">TIER 1</span>
+                <span class="step-name">Local Apple Silicon</span>
+                <span class="step-cost">Local Ollama / Llama.cpp &bull; 0 Network</span>
+              </div>
+              <span class="orch-arrow">&rarr;</span>
+              <div class="orch-step">
+                <span class="step-badge">TIER 2</span>
+                <span class="step-name">Baseline Reasoning</span>
+                <span class="step-cost">Fast Multi-turn Evaluation</span>
+              </div>
+              <span class="orch-arrow">&rarr;</span>
+              <div class="orch-step">
+                <span class="step-badge">TIER 3</span>
+                <span class="step-name">Frontier Models</span>
+                <span class="step-cost">Deep Adversarial Arbiters</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         CHAPTER 05: ROBOTICS LAB (MULTIPEDAL KINEMATICS)
+         ====================================================================== -->
+    <section id="robotics" class="scene robotics-scene" data-chapter-index="05" data-chapter-title="KINEMATICS &amp; CHASSIS">
+      <div class="scene-inner">
+
+        <!-- Chapter Header Eyebrow -->
+        <div class="scene-eyebrow">
+          <span class="thread-anchor-node" data-anchor="robotics-header" aria-hidden="true"></span>
+          <span class="mono eyebrow-tag">CHAPTER 05 // KINEMATICS &amp; CHASSIS</span>
+          <span class="eyebrow-rule" aria-hidden="true"></span>
+          <span class="mono eyebrow-meta">HARDWARE-SOFTWARE KINEMATIC INTEGRATION</span>
+        </div>
+
+        <div class="section-heading-wrap">
+          <h2 class="scene-title">Multipedal Locomotion — Spider-Bot Platform</h2>
+          <p class="scene-sub">
+            Investigating inverse kinematics, coordinated multi-servo power rails, and closed-loop inertial measurement tracking.
+          </p>
+        </div>
+
+        <!-- Robotics Interactive Workstation -->
+        <div class="robotics-workstation-grid">
+          
+          <!-- Kinematics Live Interactive Canvas -->
+          <div class="robotics-canvas-box">
+            <div class="frame-bar">
+              <span class="mono frame-title">3-DOF INVERSE KINEMATICS SOLVER &bull; LEG SIMULATOR</span>
+              <span class="frame-tag mono text-amber">INTERACTIVE SLIDER</span>
+            </div>
+            <canvas id="canvas-robotics" class="interactive-visual-canvas" width="600" height="400" aria-label="3-DOF Inverse Kinematics leg linkage solver canvas"></canvas>
+            <div class="robotics-controls-strip">
+              <div class="control-slider-group">
+                <label for="ik-x" class="mono">REACH X: <span id="ik-x-val">120 mm</span></label>
+                <input type="range" id="ik-x" min="40" max="200" value="120" class="kinematics-slider">
+              </div>
+              <div class="control-slider-group">
+                <label for="ik-y" class="mono">DEPTH Y: <span id="ik-y-val">90 mm</span></label>
+                <input type="range" id="ik-y" min="20" max="180" value="90" class="kinematics-slider">
+              </div>
+            </div>
           </div>
 
-          <!-- Utility 3: Mac KeyGlow -->
-          <div class="utility-card">
-            <div class="utility-top">
-              <div class="project-tag-row">
-                <span class="pill pill-cyan">NATIVE SWIFT</span>
-                <span class="pill pill-purple">ANIMATION ENGINE</span>
-              </div>
-              <h3>mac-keyglow</h3>
-              <p class="mono" style="font-size: 0.82rem; margin-top: 0.25rem;">Hardware Illumination Studio</p>
-              <p style="font-size: 0.92rem; margin-top: 0.75rem;">
-                Menu-bar controller &amp; mathematical animation studio featuring Instant Strike (flashes keyboard on keydown, 
-                snaps off on release) and 45–60 FPS lighting waveforms with &lt; 0.2% CPU overhead.
+          <!-- Grounded Engineering Status -->
+          <div class="robotics-specs-box">
+            <div class="status-disclosure">
+              <span class="mono text-amber">HONEST ENGINEERING STATUS:</span>
+              <p>
+                This is an active physical R&amp;D project. No fabricated 3D renders implying an unfinished robot is finished. 
+                Focus is currently centered on mechanical linkage calculations and microcontroller PWM bus power stability.
               </p>
-              
-              <ul class="utility-metrics-list">
-                <li><span class="metric-label">Implementation</span><span class="metric-val">Native Swift &bull; Dual CLI/GUI</span></li>
-                <li><span class="metric-label">Animation Clock</span><span class="metric-val">45–60 FPS hardware loop</span></li>
-                <li><span class="metric-label">CPU Consumption</span><span class="metric-val">&lt; 0.2% active</span></li>
-                <li><span class="metric-label">UI Interface</span><span class="metric-val">Translucent bezel HUD</span></li>
-                <li><span class="metric-label">Compatibility</span><span class="metric-val">Apple Silicon M-series &amp; Intel</span></li>
-              </ul>
             </div>
-            <a href="https://github.com/anant-rajj/mac-keyglow" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="width: 100%;">INSPECT REPOSITORY ↗</a>
+
+            <div class="kinematic-subsystems">
+              <div class="subsystem-item">
+                <div class="subsystem-header mono">
+                  <span class="subsystem-title">01 // INVERSE KINEMATICS</span>
+                  <span class="badge-pill badge-green mono">SIMULATED</span>
+                </div>
+                <p>Geometric trigonometry solver translating target foot $(X, Y, Z)$ coordinates into 3 joint angles ($\theta_1, \theta_2, \theta_3$).</p>
+              </div>
+
+              <div class="subsystem-item">
+                <div class="subsystem-header mono">
+                  <span class="subsystem-title">02 // SERVO COORDINATION BUS</span>
+                  <span class="badge-pill badge-amber mono">BREADBOARD TESTING</span>
+                </div>
+                <p>Microcontroller PWM signals synchronized across high-current power rails to drive smooth tripod and wave gaits without voltage dips.</p>
+              </div>
+
+              <div class="subsystem-item">
+                <div class="subsystem-header mono">
+                  <span class="subsystem-title">03 // IMU TELEMETRY FEEDBACK</span>
+                  <span class="badge-pill mono">CALIBRATION</span>
+                </div>
+                <p>6-axis inertial measurement unit (IMU) tracking real-time roll and pitch to dynamically adapt leg extensions across uneven terrain.</p>
+              </div>
+            </div>
+
           </div>
 
         </div>
@@ -351,260 +915,320 @@
     </section>
 
     <!-- ======================================================================
-         SECTION 5: PRODUCT DEVELOPMENT — THERMOX
+         CHAPTER 06: CADENCE & ORIGIN (ABOUT & ATHLETICS)
          ====================================================================== -->
-    <section id="thermox" class="section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">// PRODUCT DESIGN &amp; HARDWARE</span>
-          <h2>ThermoX — Modular Cooling Cartridge Bottle</h2>
-          <p class="section-lead">
-            An exploration of physical product development: designing an ergonomic hydration system with interchangeable thermal cartridges.
+    <section id="about" class="scene about-scene" data-chapter-index="06" data-chapter-title="CADENCE &amp; ORIGIN">
+      <div class="scene-inner">
+
+        <!-- Chapter Header Eyebrow -->
+        <div class="scene-eyebrow">
+          <span class="thread-anchor-node" data-anchor="about-header" aria-hidden="true"></span>
+          <span class="mono eyebrow-tag">CHAPTER 06 // CADENCE &amp; ORIGIN</span>
+          <span class="eyebrow-rule" aria-hidden="true"></span>
+          <span class="mono eyebrow-meta">FROM THE TRACK TO THE KERNEL</span>
+        </div>
+
+        <div class="section-heading-wrap">
+          <h2 class="scene-title">Cadence Over Chaos. Discipline Over Momentum.</h2>
+          <p class="scene-sub">
+            The foundation of my work: why competitive track athletics forged my mindset as a systems builder.
           </p>
         </div>
 
-        <div class="project-case-card">
-          <div class="project-header-row">
+        <div class="origin-story-grid">
+          
+          <!-- Narrative Column -->
+          <div class="origin-story-content">
+            <p class="origin-lead">
+              Before I ever analyzed a software supply chain or interfaced with an Apple Silicon power assertion, 
+              my life was governed by the track.
+            </p>
+            <p>
+              I competed in <strong>100-meter and 200-meter sprints</strong> and endured <strong>long-distance marathons</strong>. 
+              On the track, there is nowhere to hide. You learn quickly that velocity is not created by frantic flailing; 
+              it is the result of strict cadence, stride economics, breath control, and the disciplined willingness to stay 
+              completely composed through the burning fatigue of the final 40 meters.
+            </p>
+            <p>
+              When I shifted my focus during intensive JEE preparation and entered engineering at Rishihood University, 
+              I carried that exact athletic cadence directly into computer systems.
+            </p>
+            <p>
+              I don't treat code as a cosmetic hobby or a checklist for a resume. When a system breaks or a build fails, 
+              I approach it the way an athlete reviews split-times: isolate the constraint, eliminate the parasitic friction, 
+              test repeatedly against hard reality, and build solutions that endure.
+            </p>
+
+            <div class="athlete-quote-card">
+              <span class="mono quote-tag">// ATHLETIC HEURISTIC</span>
+              <p class="quote-text">
+                “Form under fatigue reveals whether you actually understand the discipline.”
+              </p>
+            </div>
+          </div>
+
+          <!-- Structured Principles Column -->
+          <div class="origin-principles-col">
+            <h3 class="principles-heading mono">CORE OPERATING PRINCIPLES</h3>
+
+            <div class="principles-accordion">
+              <div class="principle-item">
+                <div class="principle-header">
+                  <span class="mono p-num">01</span>
+                  <span class="p-title">Deconstruct Before Coding</span>
+                </div>
+                <p class="p-body">
+                  Investigate the ecosystem deeply. Understand the historical constraints and memory layouts before opening an editor.
+                </p>
+              </div>
+
+              <div class="principle-item">
+                <div class="principle-header">
+                  <span class="mono p-num">02</span>
+                  <span class="p-title">Zero Parasitic Abstractions</span>
+                </div>
+                <p class="p-body">
+                  Prefer native low-level primitives over bulky third-party runtimes. If a ~24 KB binary solves the problem, don't ship a 100 MB daemon.
+                </p>
+              </div>
+
+              <div class="principle-item">
+                <div class="principle-header">
+                  <span class="mono p-num">03</span>
+                  <span class="p-title">Deterministic Verification</span>
+                </div>
+                <p class="p-body">
+                  Self-reported AI confidence is meaningless without reproducible test matrices and hard cryptographic checksums.
+                </p>
+              </div>
+
+              <div class="principle-item">
+                <div class="principle-header">
+                  <span class="mono p-num">04</span>
+                  <span class="p-title">Critique as Engineering Signal</span>
+                </div>
+                <p class="p-body">
+                  Treat jury reviews and failed runs as high-signal input. Strip away ego and rebuild until the architecture is bulletproof.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         CHAPTER 07: TRANSMISSION / CONTACT (AENGEL.IO FUSION)
+         ====================================================================== -->
+    <section id="contact" class="scene contact-scene" data-chapter-index="07" data-chapter-title="TRANSMISSION">
+      <div class="scene-inner">
+
+        <!-- Chapter Header Eyebrow -->
+        <div class="scene-eyebrow">
+          <span class="thread-anchor-node" data-anchor="contact-header" aria-hidden="true"></span>
+          <span class="mono eyebrow-tag">CHAPTER 07 // TRANSMISSION &amp; DISPATCH</span>
+          <span class="eyebrow-rule" aria-hidden="true"></span>
+          <span class="mono eyebrow-meta">TELEMETRY: 23.1815° N, 79.9864° E</span>
+        </div>
+
+        <div class="contact-terminal-container">
+          
+          <!-- Top Telemetry Bar (aengel.io style) -->
+          <div class="terminal-meta-bar">
+            <div class="telemetry-availability">
+              <span class="pulse-indicator"></span>
+              <span class="mono">STATUS: OPEN FOR RESEARCH &amp; SYSTEMS COLLABORATION</span>
+            </div>
+            <div class="telemetry-clock-group mono">
+              <span class="clock-label text-dim">LOCATION:</span>
+              <span class="clock-val">MADHYA PRADESH, IN (UTC+5:30)</span>
+              <span class="clock-sep">&bull;</span>
+              <span class="clock-time text-cyan" id="contact-live-clock">17:00:00 IST</span>
+            </div>
+          </div>
+
+          <!-- Main Header -->
+          <div class="terminal-heading-row">
             <div>
-              <h3>ThermoX</h3>
-              <span class="project-subtitle">Concept &bull; Modular Thermal Engineering</span>
+              <h2 class="terminal-title">Initiate Transmission.</h2>
+              <p class="terminal-subtitle">
+                Whether you want to deconstruct a software supply chain, benchmark Apple Silicon kernel power assertions, 
+                collaborate on multi-agent architectures, or build multipedal robotics — dispatch your transmission below.
+              </p>
             </div>
-            <span class="pill pill-amber">
-              <span class="status-dot"></span> PROTOTYPE &amp; CONCEPT STAGE
-            </span>
-          </div>
-
-          <p class="project-summary">
-            Conventional insulated bottles are heavy, rigid, and passive. ThermoX explores a modular cartridge architecture 
-            allowing users to swap pre-chilled or heated phase-change inserts directly into the core, separating thermal regulation 
-            from the outer fluid reservoir.
-          </p>
-
-          <table class="tech-spec-table">
-            <thead>
-              <tr>
-                <th>Engineering Objective</th>
-                <th>Design Exploration</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Thermal Modularity</strong></td>
-                <td>Removable core cartridge allowing quick thermal refresh without pouring out water</td>
-                <td>Concept specification modeled</td>
-              </tr>
-              <tr>
-                <td><strong>Materials &amp; Ergonomics</strong></td>
-                <td>Lightweight food-grade polymers &amp; brushed alloy protective sleeve</td>
-                <td>Industrial design in progress</td>
-              </tr>
-              <tr>
-                <td><strong>Digital Presence</strong></td>
-                <td>Live concept portal showcasing product vision</td>
-                <td><a href="https://thermox.ai.studio/" target="_blank" rel="noopener noreferrer">thermox.ai.studio ↗</a></td>
-              </tr>
-            </tbody>
-          </table>
-
-          <div class="project-links-row">
-            <a href="https://thermox.ai.studio/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">VISIT THERMOX PORTAL ↗</a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ======================================================================
-         SECTION 6: AI SYSTEMS RESEARCH (MULTI-AGENT ARCHITECTURE)
-         ====================================================================== -->
-    <section id="ai-research" class="section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">// AI SYSTEMS R&amp;D</span>
-          <h2>Multi-Agent Fleet Architecture</h2>
-          <p class="section-lead">
-            Exploring multi-model, multi-agent collectives structured like specialized engineering organizations. 
-            No single model works alone; tasks are decomposed into directed acyclic graphs (DAGs) and routed to specialized tiers.
-          </p>
-        </div>
-
-        <div class="blueprint-box">
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-            <h3>The Departmental Organization Model</h3>
-            <span class="pill pill-purple">ARCHITECTURAL R&amp;D</span>
-          </div>
-
-          <p style="margin-top: 1rem; max-width: 850px;">
-            Inspired by the open-source Hermes AI framework and contemporary agentic paradigms, this architecture 
-            allocates responsibilities across discrete departments rather than relying on a single monolithic context window:
-          </p>
-
-          <!-- 5 Departments Visual -->
-          <div class="blueprint-grid-visual">
-            <div class="blueprint-dept-card">
-              <h4><span>🔬</span> Research</h4>
-              <p>Primary source extraction, arXiv/PubMed retrieval, API documentation synthesis, and claim-level verification.</p>
-            </div>
-
-            <div class="blueprint-dept-card">
-              <h4><span>💻</span> Development</h4>
-              <p>System blueprints, architectural mappings, environment setup, and refactoring execution.</p>
-            </div>
-
-            <div class="blueprint-dept-card">
-              <h4><span>🧪</span> QA &amp; Evaluation</h4>
-              <p>Unit test execution, runtime regression reproduction, edge-case probing, and deterministic validation.</p>
-            </div>
-
-            <div class="blueprint-dept-card">
-              <h4><span>📄</span> Docs &amp; UX</h4>
-              <p>Visual DAG charting (Mermaid diagrams), semantic compression, and technical post-mortems.</p>
-            </div>
-
-            <div class="blueprint-dept-card">
-              <h4><span>⚖️</span> Adversarial Debate</h4>
-              <p>Cross-model triad debate: Proposer &rarr; Red-Team Critic &rarr; Pragmatic Judge for high-risk modifications.</p>
+            <div class="terminal-quick-email">
+              <span class="mono text-dim">DIRECT DISPATCH ROUTE:</span>
+              <a href="mailto:anantraj.clcs@gmail.com" class="terminal-email-link" id="email-link">
+                anantraj.clcs@gmail.com
+              </a>
+              <button id="copy-email-btn" class="btn btn-ghost copy-btn" data-email="anantraj.clcs@gmail.com">
+                <span id="copy-text">COPY ADDRESS</span>
+                <span class="btn-arrow" aria-hidden="true">⎘</span>
+              </button>
             </div>
           </div>
 
-          <div class="blueprint-orchestrator-node">
-            <h4 style="color: var(--cyan-accent); margin-bottom: 0.5rem;">Central Quota-Aware Orchestration Layer</h4>
-            <p style="font-size: 0.9rem; color: var(--text-secondary); max-width: 750px; margin: 0 auto;">
-              Deterministic Tier 0 tools (<code>grep</code>, <code>zsh</code>, linters) &rarr; Local Apple Silicon Ollama at 0 token cost &rarr; 
-              Included baseline models &rarr; Frontier reasoning models only when simpler tiers fail verification.
-            </p>
-          </div>
-        </div>
+          <!-- The Two-Column Interactive Transmission Workbench -->
+          <div class="transmission-workbench-grid">
+            
+            <!-- Left: Interactive Dispatch Console (Form) -->
+            <form id="dispatch-form" class="dispatch-form" onsubmit="return false;">
+              <div class="form-header-bar mono">
+                <span class="corner-cross cross-tl">+</span>
+                <span class="corner-cross cross-tr">+</span>
+                <span>DISPATCH CONSOLE // STAGE 01</span>
+                <span class="form-security text-green">READY FOR COMPILATION</span>
+              </div>
 
-      </div>
-    </section>
+              <!-- Field 1: Name -->
+              <div class="form-field-group">
+                <label for="sender-name" class="mono form-label">
+                  <span class="field-num">01.</span> SENDER IDENTITY / ORGANIZATION
+                </label>
+                <input type="text" id="sender-name" class="terminal-input" placeholder="e.g. Dr. Ada Lovelace // Systems Lab" required autocomplete="name">
+              </div>
 
-    <!-- ======================================================================
-         SECTION 7: ROBOTICS LAB (HARDWARE-SOFTWARE INTEGRATION)
-         ====================================================================== -->
-    <section id="robotics" class="section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">// HARDWARE LAB &amp; ROBOTICS</span>
-          <h2>Multipedal Locomotion — Spider-Bot Project</h2>
-          <p class="section-lead">
-            Collaborative hardware-software exploration into multipedal robotics, kinematics, servo coordination, 
-            and microcontroller sensor integration.
-          </p>
-        </div>
+              <!-- Field 2: Email -->
+              <div class="form-field-group">
+                <label for="sender-email" class="mono form-label">
+                  <span class="field-num">02.</span> RETURN ADDRESS (EMAIL)
+                </label>
+                <input type="email" id="sender-email" class="terminal-input" placeholder="e.g. lovelace@institution.org" required autocomplete="email">
+              </div>
 
-        <div class="project-case-card">
-          <div class="project-header-row">
-            <div>
-              <h3>Spider-Bot Autonomous Platform</h3>
-              <span class="project-subtitle">Robotics Team Engineering Lab</span>
+              <!-- Field 3: Inquiry Domain (Pills) -->
+              <div class="form-field-group">
+                <label class="mono form-label">
+                  <span class="field-num">03.</span> DOMAIN OF INQUIRY
+                </label>
+                <div class="domain-selector-pills" id="domain-pills">
+                  <button type="button" class="domain-pill is-active" data-domain="Low-Level Systems & macOS">
+                    <span class="pill-dot"></span> macOS Low-Level
+                  </button>
+                  <button type="button" class="domain-pill" data-domain="Software Supply-Chain Security">
+                    <span class="pill-dot"></span> Supply-Chain Audit
+                  </button>
+                  <button type="button" class="domain-pill" data-domain="Multi-Agent AI Architecture">
+                    <span class="pill-dot"></span> Multi-Agent AI
+                  </button>
+                  <button type="button" class="domain-pill" data-domain="Hardware Kinematics & Robotics">
+                    <span class="pill-dot"></span> Robotics Kinematics
+                  </button>
+                  <button type="button" class="domain-pill" data-domain="General Research & Exploration">
+                    <span class="pill-dot"></span> General R&amp;D
+                  </button>
+                </div>
+              </div>
+
+              <!-- Field 4: Message Payload -->
+              <div class="form-field-group">
+                <div class="label-with-counter">
+                  <label for="sender-message" class="mono form-label">
+                    <span class="field-num">04.</span> TRANSMISSION PAYLOAD (MESSAGE)
+                  </label>
+                  <span class="mono payload-byte-counter" id="byte-counter">0 BYTES</span>
+                </div>
+                <textarea id="sender-message" class="terminal-textarea" rows="4" placeholder="Deconstruct the problem, question, or proposal..."></textarea>
+              </div>
+
+              <!-- Actions -->
+              <div class="dispatch-form-actions">
+                <button type="button" id="transmit-btn" class="btn btn-crimson transmit-action-btn">
+                  <span>TRANSMIT DISPATCH (MAILTO)</span>
+                  <span class="btn-arrow" aria-hidden="true">↗</span>
+                </button>
+                <button type="button" id="copy-packet-btn" class="btn btn-ghost copy-packet-btn">
+                  <span>COPY COMPILED PACKET</span>
+                  <span class="btn-arrow" aria-hidden="true">⎘</span>
+                </button>
+                <button type="reset" id="reset-form-btn" class="btn btn-minimal reset-btn mono" title="Clear fields">
+                  RESET ↺
+                </button>
+              </div>
+            </form>
+
+            <!-- Right: Real-Time Packet Compilation Preview Terminal -->
+            <div class="packet-preview-panel">
+              <div class="preview-header-bar mono">
+                <span class="corner-cross cross-tl">+</span>
+                <span class="corner-cross cross-tr">+</span>
+                <span>PACKET COMPILER // STREAM PREVIEW</span>
+                <span class="packet-status text-cyan" id="packet-status">LIVE STREAM</span>
+              </div>
+              <div class="preview-terminal-body mono" id="terminal-packet-body">
+// DISPATCH PACKET [UNCOMPILED]
+------------------------------------------------------------
+PROTOCOL: TCP/MAILTO DIRECT TRANSMISSION
+TARGET: Anant Raj &lt;anantraj.clcs@gmail.com&gt;
+TIMESTAMP: <span id="preview-timestamp">2026-11-02 17:00:00 IST</span>
+PACKET HASH: <span id="preview-hash">0x8F4E21A9</span>
+DOMAIN: <span id="preview-domain">Low-Level Systems & macOS</span>
+SENDER: <span id="preview-sender">&lt;Awaiting Identity&gt;</span>
+RETURN: <span id="preview-email">&lt;Awaiting Frequency&gt;</span>
+------------------------------------------------------------
+PAYLOAD CONTENT:
+<span id="preview-payload" class="preview-payload-text text-muted">&lt;Awaiting transmission payload... Type into the console to compile in real-time&gt;</span>
+------------------------------------------------------------
+CHECKSUM STATUS: <span id="preview-checksum" class="text-green">VERIFIED (0 ERRORS)</span>
+              </div>
+              <div class="preview-terminal-footer mono">
+                <span>BUFFER: ALLOCATED</span>
+                <span>DEST: anantraj.clcs@gmail.com</span>
+              </div>
             </div>
-            <span class="pill pill-amber">
-              <span class="status-dot"></span> IN-PROGRESS ENGINEERING
-            </span>
+
           </div>
 
-          <p class="project-summary">
-            Investigating mechanical linkages and inverse kinematics for stability across uneven terrain. 
-            The system coordinates multi-axis servo motors with real-time feedback loops to establish smooth tripod and wave gaits.
-          </p>
+          <!-- Channel Directory Grid -->
+          <div class="terminal-channels-grid">
+            <a href="https://github.com/anant-rajj" target="_blank" rel="noopener noreferrer" class="terminal-channel-card">
+              <div class="channel-card-head mono">
+                <span>01 // SOURCE CONTROL</span>
+                <span class="text-cyan">PUBLIC ↗</span>
+              </div>
+              <h3 class="channel-card-title">GitHub Profile</h3>
+              <p class="channel-card-meta mono">github.com/anant-rajj</p>
+              <p class="channel-card-desc">Low-level macOS utilities, supply-chain analyzers, Apple Silicon harnesses.</p>
+            </a>
 
-          <table class="tech-spec-table">
-            <thead>
-              <tr>
-                <th>Subsystem</th>
-                <th>Engineering Scope</th>
-                <th>Current Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Kinematics &amp; Gait</strong></td>
-                <td>Inverse kinematic solver calculating joint angles for stable 6/8-legged traversal</td>
-                <td>Algorithmic simulation &amp; linkage testing</td>
-              </tr>
-              <tr>
-                <td><strong>Control Electronics</strong></td>
-                <td>Microcontroller PWM bus driving coordinated multi-servo power rails</td>
-                <td>Breadboard prototype &amp; power sequencing</td>
-              </tr>
-              <tr>
-                <td><strong>Sensor Integration</strong></td>
-                <td>IMU orientation tracking &amp; ultrasonic distance telemetry</td>
-                <td>Sensor calibration &amp; state estimation loop</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            <a href="https://anant-rajj.github.io/pratyancha-hacktoberfest/" target="_blank" rel="noopener noreferrer" class="terminal-channel-card">
+              <div class="channel-card-head mono">
+                <span>02 // LIVE DASHBOARD</span>
+                <span class="text-green">42 TESTS ↗</span>
+              </div>
+              <h3 class="channel-card-title">VeriPack Provenance</h3>
+              <p class="channel-card-meta mono">anant-rajj.github.io/pratyancha-hacktoberfest</p>
+              <p class="channel-card-desc">Software supply-chain tarball integrity &amp; Zip-Slip defense suite.</p>
+            </a>
 
-      </div>
-    </section>
+            <a href="https://thermox.ai.studio/" target="_blank" rel="noopener noreferrer" class="terminal-channel-card">
+              <div class="channel-card-head mono">
+                <span>03 // PRODUCT PORTAL</span>
+                <span class="text-amber">PORTAL ↗</span>
+              </div>
+              <h3 class="channel-card-title">ThermoX</h3>
+              <p class="channel-card-meta mono">thermox.ai.studio</p>
+              <p class="channel-card-desc">Modular phase-change thermal bottle concept and digital presentation.</p>
+            </a>
 
-    <!-- ======================================================================
-         SECTION 8: INITIATIVES, COMPETITIONS & EXPERIENCE
-         ====================================================================== -->
-    <section id="experience" class="section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">// EXPERIENCE &amp; COMPETITIONS</span>
-          <h2>Institutional Initiatives &amp; Track Record</h2>
-          <p class="section-lead">
-            Evidence-backed participation across competitive engineering hackathons, nationwide entrepreneurship bootcamps, and athletics.
-          </p>
-        </div>
-
-        <div class="timeline">
-
-          <!-- Entry 1: NEC IIT Bombay -->
-          <div class="timeline-entry">
-            <span class="timeline-bullet"></span>
-            <span class="timeline-period">2026 // ONGOING</span>
-            <h3>National Entrepreneurship Challenge (NEC) — Advanced Track</h3>
-            <span class="timeline-org">E-Cell IIT Bombay &bull; Team Ignitrones</span>
-            <p>
-              Participating in Asia's largest institutional entrepreneurship and ecosystem-building bootcamp. 
-              Contributing to concept research, structured technical documentation, campus execution models, 
-              sponsorship frameworks, and preparation for offline crisis simulations at the IIT Bombay E-Summit.
-            </p>
+            <div class="terminal-channel-card academic-card">
+              <div class="channel-card-head mono">
+                <span>04 // BASE CAMP</span>
+                <span class="text-crimson">ACADEMIC</span>
+              </div>
+              <h3 class="channel-card-title">Rishihood University</h3>
+              <p class="channel-card-meta mono">Madhya Pradesh &bull; Sonipat</p>
+              <p class="channel-card-desc">R&amp;D Systems, Software Engineering, AI &amp; Robotics Research.</p>
+            </div>
           </div>
 
-          <!-- Entry 2: VeriPack / Hack Day Sonipat -->
-          <div class="timeline-entry">
-            <span class="timeline-bullet"></span>
-            <span class="timeline-period">OCTOBER 2026</span>
-            <h3>Team Lead — VeriPack (Problem Statement 04)</h3>
-            <span class="timeline-org">Hack Day Sonipat &bull; Rishihood University &times; DevClub &bull; Team pratyancha</span>
-            <p>
-              Led four-person team in architecting an end-to-end software package provenance verifier. 
-              Engineered safe extraction bounds against Zip-Slip, AST capability inspections, and Shannon byte entropy models. 
-              Authored test suite with 42 passing unit/integration tests and published live dashboard.
-            </p>
-          </div>
-
-          <!-- Entry 3: Eureka! -->
-          <div class="timeline-entry">
-            <span class="timeline-bullet"></span>
-            <span class="timeline-period">2026</span>
-            <h3>Product Development &amp; Iteration — Eureka!</h3>
-            <span class="timeline-org">E-Cell IIT Bombay Flagship Competition</span>
-            <p>
-              Developed an early-stage product concept. Welcomed direct critical feedback regarding early implementation limitations, 
-              deconstructing the critiques to fundamentally rebuild the technical architecture and user experience.
-            </p>
-          </div>
-
-          <!-- Entry 4: Student Athletics -->
-          <div class="timeline-entry">
-            <span class="timeline-bullet"></span>
-            <span class="timeline-period">FOUNDATIONAL</span>
-            <h3>Competitive Track Athletics &amp; Endurance</h3>
-            <span class="timeline-org">100m &bull; 200m Sprinting &bull; Long-Distance Marathons</span>
-            <p>
-              Formative athletic background competing in short-distance sprints and distance runs. 
-              Instilled a relentless work ethic: learning that performance is a function of disciplined preparation, 
-              cadence, and pushing past fatigue to finish every rep.
-            </p>
+          <!-- Terminus Node -->
+          <div class="thread-terminus-node">
+            <div class="terminus-ring" data-anchor="contact-terminus"></div>
+            <span class="mono terminus-caption">THE CONTINUOUS THREAD TERMINATES &bull; THE SYSTEM PERSISTS</span>
           </div>
 
         </div>
@@ -612,87 +1236,46 @@
       </div>
     </section>
 
-    <!-- ======================================================================
-         SECTION 9: AMBIENT AUDIO STATION (SEMANTIC HTML5 AUDIO)
-         ====================================================================== -->
-    <section class="section" style="padding: 3.5rem 0;">
-      <div class="container">
-        <div class="audio-station">
-          <div class="audio-meta">
-            <div class="audio-icon-box">&#9835;</div>
-            <div class="audio-details">
-              <h4>Engineering Workbench Audio // Ambient Focus</h4>
-              <p>Local soundtrack for reviewing technical specifications &bull; Pure HTML5 Audio Element</p>
-            </div>
-          </div>
-          <audio controls preload="none">
-            <source src="assets/ambient.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-          </audio>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================================================================
-         SECTION 10: CONTACT & VERIFIED LINKS
-         ====================================================================== -->
-    <section id="contact" class="section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">// TRANSMISSION &amp; CONTACT</span>
-          <h2>Connect &amp; Collaborate</h2>
-          <p class="section-lead">
-            Open for technical research discussions, systems engineering collaborations, hardware experiments, and R&amp;D initiatives.
-          </p>
-        </div>
-
-        <div class="contact-grid">
-          <div class="contact-card">
-            <h3>Direct Email</h3>
-            <p>For research inquiries, project proposals, and technical exchanges:</p>
-            <p style="margin-top: 1rem;">
-              <a href="mailto:anantraj.clcs@gmail.com" class="mono">anantraj.clcs@gmail.com ✉</a>
-            </p>
-          </div>
-
-          <div class="contact-card">
-            <h3>GitHub Profile</h3>
-            <p>Explore public repositories, commit histories, native Mac tools, and security analyzers:</p>
-            <p style="margin-top: 1rem;">
-              <a href="https://github.com/anant-rajj" target="_blank" rel="noopener noreferrer" class="mono">github.com/anant-rajj ↗</a>
-            </p>
-          </div>
-
-          <div class="contact-card">
-            <h3>Live Systems</h3>
-            <p>Inspect active deployments and publicly hosted dashboards:</p>
-            <p style="margin-top: 1rem;">
-              <a href="https://anant-rajj.github.io/pratyancha-hacktoberfest/" target="_blank" rel="noopener noreferrer" class="mono">VeriPack Live Dashboard ↗</a><br>
-              <a href="https://thermox.ai.studio/" target="_blank" rel="noopener noreferrer" class="mono" style="margin-top: 0.5rem; display: inline-block;">ThermoX Product Portal ↗</a>
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </section>
   </main>
 
   <!-- ======================================================================
-       FOOTER
+       TECHNICAL SPECIFICATIONS SLIDE-OUT DRAWER
+       (Preserves complete, uncompromised technical depth without cluttering narrative)
+       ====================================================================== -->
+  <aside id="technical-drawer" class="technical-drawer" aria-label="Technical Case Study Detail Drawer" aria-hidden="true">
+    <div class="drawer-backdrop" id="drawer-backdrop"></div>
+    <div class="drawer-panel">
+      
+      <div class="drawer-top-bar">
+        <span class="mono drawer-badge" id="drawer-spec-id">SPECIFICATION SHEET</span>
+        <button id="drawer-close-btn" class="drawer-close-btn mono" aria-label="Close technical drawer">[ESC ✕]</button>
+      </div>
+
+      <div class="drawer-scroll-body" id="drawer-content">
+        <!-- Content injected dynamically via JavaScript based on selected project -->
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- ======================================================================
+       MINIMAL EDITORIAL FOOTER
        ====================================================================== -->
   <footer class="site-footer">
-    <div class="container footer-row">
-      <div>
-        <span>&copy; 2026 ANANT RAJ &bull; R&amp;D SYSTEMS &amp; ROBOTICS</span><br>
-        <span style="color: var(--text-dim); font-size: 0.72rem;">STATIC HTML5 + CSS3 &bull; ZERO JS &bull; RESOURCE-CONSCIOUS ARCHITECTURE</span>
+    <div class="footer-inner">
+      <div class="footer-meta">
+        <span class="mono text-muted">&copy; 2026 ANANT RAJ &bull; R&amp;D SYSTEMS &amp; ROBOTICS</span>
+        <span class="mono text-faint">LIGHTWEIGHT ARCHITECTURE &bull; ZERO BULKY FRAMEWORKS &bull; THE CONTINUOUS THREAD</span>
       </div>
-      <ul class="footer-links">
-        <li><a href="#hero">TOP &uarr;</a></li>
-        <li><a href="https://github.com/anant-rajj" target="_blank" rel="noopener noreferrer">GITHUB</a></li>
-        <li><a href="mailto:anantraj.clcs@gmail.com">EMAIL</a></li>
-      </ul>
+      <div class="footer-nav mono">
+        <a href="#hero">TOP ↑</a>
+        <a href="https://github.com/anant-rajj" target="_blank" rel="noopener noreferrer">GITHUB</a>
+        <a href="mailto:anantraj.clcs@gmail.com">EMAIL</a>
+      </div>
     </div>
   </footer>
 
+  <!-- Application Logic: Living Vector Thread, Audio Engine, Interactive Canvases -->
+  <script src="app.js"></script>
 </body>
 </html>
